@@ -18,6 +18,7 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </head>
   <body>
     <header class="navbar-nav bg-dark text-center py-3">
@@ -52,7 +53,7 @@
         <div class="col-8">
           <div class="card row my-3">
             <div class="card-body">
-              <h1 class="card-title" id="cityName">City</h1>
+              <h2 class="card-title" id="cityName">City</h2>
               <p>Temperature: <span id="temperature"></span></p>
               <p>Humdity:<span id="humidity"></span></p>
               <p>Wind Speed: <span id="wind-speed"></span></p>
@@ -61,7 +62,7 @@
           </div>
 
           <div>
-            <h1>5 day Forecast:</h1>
+            <h2>5 day Forecast:</h2>
             <div class="card" style="width: 18rem;" id="five-day-forecast">
               <div class="card-body">
                 <h5 class="card-title">Date</h5>
