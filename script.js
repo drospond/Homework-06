@@ -1,11 +1,10 @@
 $(document).ready(function(){
     var APIKey = "a012e3cf5aad2cc3ed0a6457c88685ce";
-    var latitude;
-    var longitude;
-    var queryURLUV = "api.openweathermap.org/data/2.5/uvi/history?lat=" + "&lon=" + "&appid=" + APIKey;
     
     function renderWeather(cityName){
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + cityName + "&appid=" + APIKey;
+        var latitude;
+        var longitude;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -15,6 +14,21 @@ $(document).ready(function(){
             $("#temperature").text(response.main.temp + "F");
             $("#humidity").text(response.main.humidity + "%");
             $("#wind-speed").text(response.wind.speed + " MPH");
+            latitude = response.coord.lat;
+            longitude = response.coord.lon;
+            console.log("lat: " + latitude);
+            console.log("lon: " + longitude);
+            getUVData(latitude,longitude);
+        })
+    }
+
+    function getUVData(lat, lon){
+        var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+        $.ajax({
+            url: queryURLUV,
+            method: "GET"
+        }).then(function(response){
+            $("#uv-index").text(response.value);
         })
     }
 
