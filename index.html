@@ -34,13 +34,14 @@
               type="search"
               placeholder="Search"
               aria-label="Search"
+              id="search"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-button">
               Search
             </button>
           </form>
           <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" id="search-history">
               <button class="list-group-item">Test1</button>
               <button class="list-group-item">Test2</button>
               <button class="list-group-item">Test3</button>
@@ -51,17 +52,17 @@
         <div class="col-8">
           <div class="card row my-3">
             <div class="card-body">
-              <h1 class="card-title">City</h1>
-              <p>Temperature:</p>
-              <p>Humdity:</p>
-              <p>Wind Speed</p>
-              <p>UV Index:</p>
+              <h1 class="card-title" id="cityName">City</h1>
+              <p>Temperature: <span id="temperature"></span></p>
+              <p>Humdity:<span id="humidity"></span></p>
+              <p>Wind Speed: <span id="wind-speed"></span></p>
+              <p>UV Index: <span id="uv-index"></span></p>
             </div>
           </div>
 
           <div>
             <h1>5 day Forecast:</h1>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;" id="five-day-forecast">
               <div class="card-body">
                 <h5 class="card-title">Date</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Temperature:</h6>
