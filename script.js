@@ -10,7 +10,10 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
             console.log(response);
-            $("#cityName").text(response.name + " (" + moment().format("L") + ") " + response.weather[0].main);
+            var weatherIcon = $("<img>");
+            weatherIcon.attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png")
+            $("#cityName").text(response.name + " (" + moment().format("L") + ") ");
+            $("#cityName").append(weatherIcon);
             $("#temperature").text(response.main.temp + "F");
             $("#humidity").text(response.main.humidity + "%");
             $("#wind-speed").text(response.wind.speed + " MPH");
@@ -21,6 +24,7 @@ $(document).ready(function(){
             getUVData(latitude,longitude);
         })
     }
+    // http://openweathermap.org/img/wn/10d@2x.png
 
     function getUVData(lat, lon){
         var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
@@ -70,3 +74,10 @@ $(document).ready(function(){
         // newCard.addClass("card-body");
         // var h5 = $("<h5>");
         // h5.addClass("card-title");
+
+//TODO
+//init() function
+//5 day forecast
+//font awesome icons
+//uv index color display
+//edge cases
