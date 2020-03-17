@@ -20,6 +20,58 @@
     ></script>
   </head>
   <body>
+    <header class="navbar-nav bg-dark text-center py-3">
+      <span class="mb-0 h1 text-light">Weather Dashboard</span>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <form class="form-inline my-2 my-lg-0">
+            <h3>Search for a City:</h3>
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <button class="list-group-item">Test1</button>
+              <button class="list-group-item">Test2</button>
+              <button class="list-group-item">Test3</button>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="card row my-3">
+            <div class="card-body">
+              <h1 class="card-title">City</h1>
+              <p>Temperature:</p>
+              <p>Humdity:</p>
+              <p>Wind Speed</p>
+              <p>UV Index:</p>
+            </div>
+          </div>
+
+          <div>
+            <h1>5 day Forecast:</h1>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Temperature:</h6>
+                <p class="card-text">Humdity:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="script.js" async defer></script>
   </body>
 </html>
