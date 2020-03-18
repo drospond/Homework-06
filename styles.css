@@ -1,3 +1,19 @@
 .mr-sm-2, .mx-sm-2 {
     margin-right: 0px!important;
 }
+
+.weather-icon{
+    width: 50px;
+}
+
+.forecast{
+    width: 18%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 17px;
+    background-color: #008cff;
+}
+
+.searchContainer{
+    background-color: rgb(231, 231, 231);
+}

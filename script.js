@@ -23,8 +23,39 @@ $(document).ready(function(){
             console.log("lon: " + longitude);
             getUVData(latitude,longitude);
         })
+        renderFiveDay(cityName);
     }
-    // http://openweathermap.org/img/wn/10d@2x.png
+    
+    function renderFiveDay(cityName){
+        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + cityName +"&appid=" + APIKey;
+        $("#five-day-forecast").text("");
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response){
+            for(var i = 0; i <= 40; i+=8){
+                var newCard = $("<div>");
+                newCard.addClass("card card-body forecast text-light");
+                var h5 = $("<h5>");
+                h5.addClass("card-title");
+                h5.text(moment(response.list[i].dt * 1000).format("L"));
+                var weatherIcon = $("<img>");
+                weatherIcon.addClass("weather-icon");
+                weatherIcon.attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + ".png")
+                var temp = $("<p>");
+                temp.addClass("card-text");
+                temp.text("Temp: " + response.list[i].main.temp + " F");
+                var humidity = $("<p>");
+                humidity.addClass("card-text");
+                humidity.text("Humidity: " + response.list[i].main.humidity);
+                newCard.append(h5);
+                newCard.append(weatherIcon);
+                newCard.append(temp);
+                newCard.append(humidity);
+                $("#five-day-forecast").append(newCard);
+            }
+        })
+    }
 
     function getUVData(lat, lon){
         var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
@@ -70,7 +101,7 @@ $(document).ready(function(){
                 <p class="card-text">Humdity:</p>
               </div>
             </div> */
-        //     var newCard = $("<div>");
+        // var newCard = $("<div>");
         // newCard.addClass("card-body");
         // var h5 = $("<h5>");
         // h5.addClass("card-title");
@@ -78,6 +109,5 @@ $(document).ready(function(){
 //TODO
 //init() function
 //5 day forecast
-//font awesome icons
 //uv index color display
 //edge cases
