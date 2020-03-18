@@ -7,7 +7,7 @@
 }
 
 .forecast{
-    width: 18%;
+    width: 106px;
     margin-right: 5px;
     margin-left: 5px;
     padding: 17px;
@@ -16,4 +16,9 @@
 
 .searchContainer{
     background-color: rgb(231, 231, 231);
+}
+
+#uv-index{
+    padding: 5px;
+    border-radius: 5px;
 }

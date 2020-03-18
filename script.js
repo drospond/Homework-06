@@ -1,5 +1,15 @@
 $(document).ready(function(){
     var APIKey = "a012e3cf5aad2cc3ed0a6457c88685ce";
+
+    function init(){
+        if(localStorage.getItem("cityName") === null){
+            localStorage.setItem("cityName", "");
+        }else{
+            var cityName = localStorage.getItem("cityName");
+            renderWeather(cityName);
+            addHistory(cityName);
+        }
+    }
     
     function renderWeather(cityName){
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + cityName + "&appid=" + APIKey;
@@ -47,7 +57,7 @@ $(document).ready(function(){
                 temp.text("Temp: " + response.list[i].main.temp + " F");
                 var humidity = $("<p>");
                 humidity.addClass("card-text");
-                humidity.text("Humidity: " + response.list[i].main.humidity);
+                humidity.text("Humidity: " + response.list[i].main.humidity + "%");
                 newCard.append(h5);
                 newCard.append(weatherIcon);
                 newCard.append(temp);
@@ -64,12 +74,20 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
             $("#uv-index").text(response.value);
-        })
+            if(response.value < 3){
+                $("#uv-index").attr("style", "background-color: lightgreen");
+            } else if( response.value > 7){
+                $("#uv-index").attr("style", "background-color: red");
+            }else{
+                $("#uv-index").attr("style", "background-color: yellow");
+            }
+        }) 
     }
 
     function search(event){
         event.preventDefault();
         var cityName = $("#search").val();
+        localStorage.setItem("cityName", cityName);
         renderWeather(cityName);
         addHistory(cityName);
     }
@@ -83,31 +101,18 @@ $(document).ready(function(){
 
     function historySearch(){
         var cityName = $(this).text();
+        localStorage.setItem("cityName", cityName);
         renderWeather(cityName);
     }
 
     $("#search-button").on("click", search);
     $("#search-history").on("click","button", historySearch)
 
-
+    init();
 
 
 });
 
-/* <div class="card" style="width: 18rem;" id="five-day-forecast">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Temperature:</h6>
-                <p class="card-text">Humdity:</p>
-              </div>
-            </div> */
-        // var newCard = $("<div>");
-        // newCard.addClass("card-body");
-        // var h5 = $("<h5>");
-        // h5.addClass("card-title");
-
 //TODO
-//init() function
-//5 day forecast
 //uv index color display
 //edge cases
