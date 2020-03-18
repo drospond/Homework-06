@@ -21,7 +21,7 @@ $(document).ready(function(){
         }).then(function(response){
             console.log(response);
             var weatherIcon = $("<img>");
-            weatherIcon.attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png")
+            weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png")
             $("#cityName").text(response.name + " (" + moment().format("L") + ") ");
             $("#cityName").append(weatherIcon);
             $("#temperature").text(response.main.temp + "F");
@@ -37,7 +37,7 @@ $(document).ready(function(){
     }
     
     function renderFiveDay(cityName){
-        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + cityName +"&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + cityName +"&appid=" + APIKey;
         $("#five-day-forecast").text("");
         $.ajax({
             url: queryURL,
@@ -51,7 +51,7 @@ $(document).ready(function(){
                 h5.text(moment(response.list[i].dt * 1000).format("L"));
                 var weatherIcon = $("<img>");
                 weatherIcon.addClass("weather-icon");
-                weatherIcon.attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + ".png")
+                weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + ".png")
                 var temp = $("<p>");
                 temp.addClass("card-text");
                 temp.text("Temp: " + response.list[i].main.temp + " F");
@@ -68,7 +68,7 @@ $(document).ready(function(){
     }
 
     function getUVData(lat, lon){
-        var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+        var queryURLUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
         $.ajax({
             url: queryURLUV,
             method: "GET"
