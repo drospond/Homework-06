@@ -19,7 +19,6 @@ $(document).ready(function(){
             url: queryURL,
             method: "GET"
         }).then(function(response){
-            console.log(response);
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + ".png")
             $("#cityName").text(response.name + " (" + moment().format("L") + ") ");
@@ -29,8 +28,6 @@ $(document).ready(function(){
             $("#wind-speed").text(response.wind.speed + " MPH");
             latitude = response.coord.lat;
             longitude = response.coord.lon;
-            console.log("lat: " + latitude);
-            console.log("lon: " + longitude);
             getUVData(latitude,longitude);
         })
         renderFiveDay(cityName);
@@ -43,7 +40,7 @@ $(document).ready(function(){
             url: queryURL,
             method: "GET"
         }).then(function(response){
-            for(var i = 0; i <= 40; i+=8){
+            for(var i = 0; i < 40; i+=8){
                 var newCard = $("<div>");
                 newCard.addClass("card card-body forecast text-light");
                 var h5 = $("<h5>");
