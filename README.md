@@ -8,3 +8,6 @@ Weather dashboard is a web application that gives the current weather conditions
 
 ## Resources 
 Bootstrap was used for a majority of the CSS. Moment.js was used for date formatting. Open Weather API was used to get all weather data.
+
+## Link
+Deployed application: https://drospond.github.io/Weather-Dashboard/
